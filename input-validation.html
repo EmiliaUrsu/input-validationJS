@@ -1,0 +1,45 @@
+<body>
+<style>
+    body{
+        background-color: #444;
+    }
+
+    #input_phone{
+     padding: 1em;
+     background-color: #DDD; }
+</style>
+    
+    <label>
+        <input type="text" id="input_phone"
+         placeholder="Your phone.." onkeyup="inputAdjust()"
+          onclick="inputAdjust()" onkeydown="inputAdjust('bug')">
+    </label>
+
+    <script>
+        function inputAdjust(bug) 
+        {
+
+            let phone = input_phone.value
+            phone = phone.trim()
+
+            let lastC = phone[phone.length - 1]
+
+            if(lastC < "0" || lastC > "9") {
+                phone = phone.substring(0, phone.length - 1) }
+
+            if(phone.length == 7 || phone.length == 11) {
+                phone += "-"  }
+
+            if(phone.length > 15) {
+                phone = phone.substring(0, phone.length - 1) }
+    
+            if(event.key == "Backspace" && phone[phone.length-1] == "-" && bug) {
+                phone = phone.substring(0, phone.length - 1) }
+            
+            if( phone.length < 4) { phone = "373-" }
+
+            input_phone.value = phone
+        }
+    </script>
+    
+</body>
